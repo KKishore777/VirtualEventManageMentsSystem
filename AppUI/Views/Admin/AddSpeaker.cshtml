@@ -1,0 +1,48 @@
+﻿@model DAL.Models.SpeakersDetails
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="card-header bg-primary text-white text-center py-4" style="border-radius: 20px 20px 0 0;">
+                    <i class="bi bi-person-plus-fill fs-1"></i>
+                    <h3 class="fw-bold mb-0">Add New Speaker</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="AddSpeaker" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+                        <div class="mb-4">
+                            <label asp-for="SpeakerId" class="form-label fw-bold text-secondary">Speaker Id</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-person"></i></span>
+                                <input asp-for="SpeakerId" class="form-control form-control-lg border-start-0 bg-light"  required />
+                            </div>
+                            <span asp-validation-for="SpeakerId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="SpeakerName" class="form-label fw-bold text-secondary">Full Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-person"></i></span>
+                                <input asp-for="SpeakerName" class="form-control form-control-lg border-start-0 bg-light" placeholder="e.g. John Doe" required />
+                            </div>
+                            <span asp-validation-for="SpeakerName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold shadow-sm">
+                                <i class="bi bi-save me-2"></i>Save Speaker
+                            </button>
+                            <a asp-action="SpeakerList" class="btn btn-outline-secondary rounded-pill">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

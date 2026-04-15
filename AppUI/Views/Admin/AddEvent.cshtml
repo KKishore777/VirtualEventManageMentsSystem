@@ -1,0 +1,50 @@
+﻿@model DAL.Models.EventDetails
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="card-header bg-primary text-white text-center py-4" style="border-radius: 20px 20px 0 0;">
+                    <i class="bi bi-person-plus-fill fs-1"></i>
+                    <h3 class="fw-bold mb-0">Add New Event</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="AddEvent" method="post">
+                        <div asp-validation-summary="All" class="text-danger small"></div>
+                        
+                        <input asp-for="EventName" class="form-control mb-2" placeholder="Event Name" />
+                        <input asp-for="EventId" class="form-control mb-2" placeholder="Event Id" />
+
+                            
+                        <div class="mb-3">
+                            
+                            <input asp-for="EventCategory" class="form-control" list="eventOptions" placeholder="Type or select an option..." />
+    
+                            <datalist id="eventOptions">
+                                <option value="Workshop"></option>
+                                <option value="Keynote"></option>
+                                <option value="Technical"></option>
+                                <option value="Networking"></option>
+                            </datalist>
+                        </div>
+                            <input asp-for="EventDate" type="date" class="form-control mb-2" />
+                            <input asp-for="Description" class="form-control mb-2" placeholder="Description" />
+                            <input asp-for="Status" class="form-control mb-2" placeholder="Active/Inactive" />
+
+                            <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold shadow-sm">
+                                    <i class="bi bi-save me-2"></i>Save Event
+                                </button>
+                            <a asp-action="EventList" class="btn btn-outline-secondary rounded-pill">
+                                    Cancel
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

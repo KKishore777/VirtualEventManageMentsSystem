@@ -1,0 +1,54 @@
+﻿@model DAL.Models.EventDetails
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; //
+}
+
+<style>
+    body { background-color: #f4f7f6; }
+    .edit-container { max-width: 600px; margin: 50px auto; }
+    .card { border-radius: 15px; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .card-header { background: #4e73df; color: white; border-radius: 15px 15px 0 0 !important; }
+</style>
+
+<div class="container edit-container">
+    <div class="card">
+        <div class="card-header py-3 text-center">
+            <h4 class="mb-0">Edit Event Details</h4>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="EditEvent" method="post">
+                <input type="hidden" asp-for="EventId" /> 
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Event Name</label>
+                    <input asp-for="EventName" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Category</label>
+                    <input asp-for="EventCategory" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Event Date</label>
+                    <input asp-for="EventDate" type="datetime-local" class="form-control" 
+                           value="@Model.EventDate.ToString("yyyy-MM-ddTHH:mm")" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Status</label>
+                    <select asp-for="Status" class="form-select">
+                        <option value="Upcoming">Upcoming</option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary py-2 fw-bold">Save Changes</button>
+                    <a asp-action="EventList" class="btn btn-light border">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

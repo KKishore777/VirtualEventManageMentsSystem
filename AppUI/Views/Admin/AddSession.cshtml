@@ -1,0 +1,82 @@
+﻿@model DAL.Models.SessionInfo
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Create New Session</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddSession" method="post">
+                @* This summary will show you exactly why a save fails *@
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+
+                <div class="row">
+                    <div class="mb-3">
+                        <label asp-for="SessionId" class="form-label font-weight-bold">Session Id</label>
+                        <input asp-for="SessionId" class="form-control" placeholder="Enter session ID..." />
+                        <span asp-validation-for="SessionId" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="EventId" class="form-label font-weight-bold">Select Event</label>
+                        <select asp-for="EventId" class="form-control" asp-items="ViewBag.Events">
+                            <option value="">-- Choose an Event --</option>
+                        </select>
+                        <span asp-validation-for="EventId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="SpeakerId " class="form-label font-weight-bold">Select Speaker</label>
+                        <select asp-for="SpeakerId" class="form-control" asp-items="ViewBag.Speakers">
+                            <option value="">-- Choose a Speaker --</option>
+                        </select>
+                        <span asp-validation-for="SpeakerId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SessionTitle" class="form-label font-weight-bold">Session Title</label>
+                    <input asp-for="SessionTitle" class="form-control" placeholder="Enter session title..." />
+                    <span asp-validation-for="SessionTitle" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="SessionStart" class="form-label font-weight-bold">Start Date & Time</label>
+                        <input asp-for="SessionStart" type="datetime-local" class="form-control" />
+                        <span asp-validation-for="SessionStart" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="SessionEnd" class="form-label font-weight-bold">End Date & Time</label>
+                        <input asp-for="SessionEnd" type="datetime-local" class="form-control" />
+                        <span asp-validation-for="SessionEnd" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Description " class="form-label font-weight-bold">Session Description</label>
+                    <input asp-for="Description " class="form-control" placeholder="Enter session Description..." />
+                    <span asp-validation-for="SessionTitle" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="SessionUrl" class="form-label font-weight-bold">Session Url</label>
+                    <input asp-for="SessionUrl" class="form-control" placeholder="Enter sessionUrl..." />
+                    <span asp-validation-for="SessionTitle" class="text-danger"></span>
+                </div>
+
+                <hr />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success px-4">
+                        <i class="fas fa-save"></i> Save Session
+                    </button>
+                    <a asp-action="Dashboard" class="btn btn-outline-secondary px-4">Cancel</a>
+                      <a asp-action="SessionList" class="btn btn-outline-secondary px-4">Show Sessions</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

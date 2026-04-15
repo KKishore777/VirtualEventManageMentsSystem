@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DAL.Models.SessionInfo>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Manage Sessions (Event #@ViewBag.EventId)</h2>
+        <a asp-action="AddSession" asp-route-eventId="@ViewBag.EventId" class="btn btn-success">
+            + Add New Session
+        </a>
+    </div>
+
+    <table class="table table-bordered shadow-sm bg-white">
+        <thead class="table-dark">
+            <tr>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td><span class="badge bg-primary">@s.SessionTitle</span></td>
+                    <td>@s.SessionTitle</td>
+                    <td>@s.SessionStart.ToString("t") - @s.SessionEnd.ToString("t")</td>
+                    <td>
+                        <a asp-action="DeleteSession" asp-route-id="@s.SessionId" asp-route-eventId="@ViewBag.EventId" class="btn btn-sm btn-outline-danger">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="EventList" class="btn btn-link text-secondary">Back to Events</a>
+</div>

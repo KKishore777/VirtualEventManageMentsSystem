@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DAL.Models.SpeakersDetails>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 bg-white p-3 rounded-4 shadow-sm">
+        <div>
+            <h2 class="fw-bold mb-0 text-dark"><i class="bi bi-mic-fill text-warning me-2"></i>Speaker Management</h2>
+            <p class="text-muted mb-0 small">Total Speakers: @Model.Count()</p>
+        </div>
+        <a asp-action="AddSpeaker" class="btn btn-warning px-4 fw-bold shadow-sm">
+            <i class="bi bi-plus-lg me-1"></i> Add Speaker
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="ps-4 py-3">ID</th>
+                        <th class="py-3">Speaker Name</th>
+                        <th class="pe-4 py-3 text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center py-5 text-muted">
+                                <i class="bi bi-people fs-1 d-block mb-2 opacity-25"></i>
+                                No speakers found.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4">#@item.SpeakerId</td>
+                                <td class="fw-bold text-dark">@item.SpeakerName</td>
+                                <td>
+
+                                    <a asp-action="DeleteSpeaker" asp-route-id="@item.SpeakerId" class="btn btn-add shadow-sm" >
+                                        <i class="bi bi-plus-lg me-2"></i>Delete Session
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+ 
+
+</div>
+
