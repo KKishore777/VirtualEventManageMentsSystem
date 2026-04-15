@@ -1,0 +1,51 @@
+﻿
+
+@model DAL.Models.UserInfo
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-3">Participant Registration</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="EmailId" class="form-control" placeholder="Enter Email" />
+        <span asp-validation-for="EmailId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>User Name</label>
+        <input asp-for="UserName" class="form-control" placeholder="Enter Name" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Password</label>
+        <input asp-for="password" type="password" class="form-control" placeholder="Enter Password" />
+        <span asp-validation-for="password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label>Role</label>
+        <input asp-for="Role"  class="form-control" />
+
+        <datalist id="RegistertOptions">
+            <option value="Participant"></option>
+           
+        </datalist>
+     </div>
+
+    <button type="submit" class="btn btn-success">Register</button>
+
+</form>
+
+<div class="text-danger mt-2">
+    @Html.ValidationSummary()
+</div>
+
+<p class="mt-2">
+    Already have an account?
+    <a href="/Account/Login">Login here</a>
+</p>

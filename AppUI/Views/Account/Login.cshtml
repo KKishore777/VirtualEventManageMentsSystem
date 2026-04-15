@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<form method="post">
+    <input class="form-control mb-2" name="email" placeholder="Email" />
+    <input class="form-control mb-2" name="password" type="password" placeholder="Password" />
+
+    <button class="btn btn-primary">Login</button>
+</form>
+
+<p class="text-danger">@ViewBag.Error</p>
