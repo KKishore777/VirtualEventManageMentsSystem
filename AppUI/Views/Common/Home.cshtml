@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center">Welcome to Event Management System</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class=" row">
+    @foreach (var item in Model)
+    
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @item.EventName
+                    </h5>
+                    <p class="card-text">
+                        @item.Description
+                    </p>
+                    
+                       <div> <a asp-controller="Account"
+                           asp-action="Register"
+                           asp-route-id="@item.EventId"
+                           class="btn btn-primary ">Register Now</a>
+                       </div>
+
+                </div>
+            </div>
+        </div>
+        
+    }
+    <h2 class="text-center">Available Sessions</h2>
+    <div class="row">
+        @foreach (var session in ViewBag.sessionInfos)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@session.SessionTitle</h5>
+                        <p class="card-text">@session.SessionStart</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
