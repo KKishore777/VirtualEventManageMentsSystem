@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AppUI/AppUI.csproj" Id="57ce7a08-39ed-4f2d-a90e-9b25895d24a7" />
+  <Project Path="DAL/DAL.csproj" />
+</Solution>
