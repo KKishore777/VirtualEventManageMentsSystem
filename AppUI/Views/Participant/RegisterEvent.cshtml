@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DAL.Models.EventDetails>
+
+<div class="container">
+    <h2>My Registered Events</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.EventName</h4>
+                        <p>@item.Description</p>
+                        <span class="badge bg-success">Registered</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

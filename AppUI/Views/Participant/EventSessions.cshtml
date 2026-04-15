@@ -1,0 +1,30 @@
+﻿model List<DAL.Models.SessionInfo>
+
+@{
+    Layout = "~/Views/Shared/_ParticipantLayout.cshtml";
+}
+
+<h2>Available Sessions</h2>
+
+<div class="row">
+    @foreach (var session in Model)
+    {
+        <div class="col-md-6 mb-3">
+            <div class="card p-3 shadow-sm">
+                <h4>@session.SessionTitle</h4>
+                <p>@session.Description </p>
+                <p><strong>Start:</strong> @session.SessionStart</p>
+                <p><strong>End:</strong> @session.SessionEnd</p>
+
+                <form asp-action="RegisterEvent" asp-controller="Participant" method="post">
+                    <input type="hidden" name="eventId" value="@ViewBag.EventId" />
+                    <input type="hidden" name="sessionId" value="@session.SessionId" />
+
+                    <button type="submit" class="btn btn-success">
+                        Register
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+</div>

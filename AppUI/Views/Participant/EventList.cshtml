@@ -1,0 +1,37 @@
+﻿@model List<DAL.Models.EventDetails>
+
+@{
+    Layout = "~/Views/Shared/_ParticipantLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Available Events</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-info">
+            @TempData["Message"]
+        </div>
+    }
+<div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm p-3">
+                    <h4>@item.EventName</h4>
+                    <p><strong>Date:</strong> @item.EventDate.ToShortDateString()</p>
+                    <p><strong>Category:</strong> @item.EventCategory</p>
+                    <p>@item.Description</p>
+
+                    <a asp-controller="Participant"
+                       asp-action="EventSessions"
+                       asp-route-eventId="@item.EventId"
+                           class="btn btn-primary">
+                        View Sessions
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+    

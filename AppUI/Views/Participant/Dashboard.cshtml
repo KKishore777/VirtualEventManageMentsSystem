@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DAL.Models.ParticipantDashboardViewModel>
+
+
+
+@{
+    Layout = "~/Views/Shared/_ParticipantLayout.cshtml";
+}
+
+<h2>My Registered Events and Sessions</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 mb-3">
+            <div class="card border-primary shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title">@item.EventName</h4>
+
+                    <p><strong>Date:</strong> @item.EventDate.ToShortDateString()</p>
+                    <p><strong>Category:</strong> @item.EventCategory</p>
+
+                    <hr />
+
+                    <h5>Session: @item.SessionTitle</h5>
+                    <p>@item.Description</p>
+                    <p><strong>Start Time:</strong> @item.SessionStart</p>
+
+                    @if (item.IsAttended)
+                    {
+                        <span class="badge bg-success">Attended</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">Registered</span>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
